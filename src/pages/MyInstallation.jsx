@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import NotFound from "./NotFound";
 
 const MyInstallation = () => {
   const [apps, setApps] = useState([]);
@@ -31,10 +32,7 @@ const MyInstallation = () => {
 
   if (apps.length === 0) {
     return (
-      <div className="text-center mt-20">
-        <h2 className="text-2xl font-bold">No Installed Apps </h2>
-        <p className="text-gray-500 mt-2">Install some apps first</p>
-      </div>
+      <NotFound></NotFound>
     );
   }
 
