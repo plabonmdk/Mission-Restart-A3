@@ -9,6 +9,7 @@ import Home from "./pages/Home";
 import AllApps from "./pages/AllApps";
 import AppDetails from "./pages/AppDetails";
 import MyInstallation from "./pages/MyInstallation";
+
 import ErrorPage from "./pages/ErrorPage";
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/apps" element={<AllApps />} />
         <Route path="/apps/:id" element={<AppDetails />} />
-        <Route path="/my-installation" element={<MyInstallation />} />
+        <Route path="/installation" element={<MyInstallation />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
     </>
