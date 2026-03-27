@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import LoadingPage from "./LoadingPage";
 
 const AppDetails = () => {
   const { id } = useParams();
@@ -23,7 +24,7 @@ const AppDetails = () => {
     }
   }, [id]);
 
-  if (!app) return <div className="text-center mt-10">Loading...</div>;
+  if (!app) return <LoadingPage></LoadingPage>;
 
   const maxRating = Math.max(...app.ratings.map((r) => r.count));
 
@@ -86,7 +87,7 @@ const AppDetails = () => {
               installed ? "bg-gray-400" : "bg-green-500 hover:bg-green-600"
             }`}
           >
-            {installed ? "Installed ✅" : `Install Now (${app.size} MB)`}
+            {installed ? "Installed " : `Install Now (${app.size} MB)`}
           </button>
         </div>
       </div>

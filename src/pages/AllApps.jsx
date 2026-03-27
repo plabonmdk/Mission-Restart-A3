@@ -1,19 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import NotFound from "./NotFound";
+import LoadingPage from "./LoadingPage";
 
 const AllApps = () => {
   const [apps, setApps] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [loading, setLoading] = useState(true); 
 
   useEffect(() => {
     fetch("/app.json")
       .then((res) => res.json())
-      .then((data) => setApps(data))
-      .catch((err) => console.error(err));
+      .then((data) => {
+        setApps(data);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error(err);
+        setLoading(false); 
+      });
   }, []);
 
-  // Filter apps based on search term
   const filteredApps = apps.filter(
     (app) =>
       app.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
@@ -24,7 +31,7 @@ const AllApps = () => {
     <div className="p-5 max-w-7xl mx-auto">
       <h1 className="text-3xl font-bold mb-6 text-center">All Apps</h1>
 
-      {/* Search Bar */}
+      
       <div className="mb-6 flex justify-center">
         <input
           type="text"
@@ -35,8 +42,12 @@ const AllApps = () => {
         />
       </div>
 
-      {/* Apps Grid */}
-      {filteredApps.length > 0 ? (
+      
+      {loading ? (
+        <div className="flex justify-center items-center h-40">
+          <LoadingPage></LoadingPage>
+        </div>
+      ) : filteredApps.length > 0 ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           {filteredApps.map((app) => (
             <div
@@ -67,7 +78,7 @@ const AllApps = () => {
           ))}
         </div>
       ) : (
-        <NotFound></NotFound>
+        <NotFound />
       )}
     </div>
   );

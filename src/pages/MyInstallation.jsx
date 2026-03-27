@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import NotFound from "./NotFound";
+import { toast } from "react-toastify";
 
 const MyInstallation = () => {
   const [apps, setApps] = useState([]);
   const [installedIds, setInstalledIds] = useState([]);
 
   useEffect(() => {
-    // get installed ids
+   
     const stored = JSON.parse(localStorage.getItem("apps")) || [];
     setInstalledIds(stored);
 
-    // fetch all apps
+    
     fetch("/app.json")
       .then((res) => res.json())
       .then((data) => {
@@ -22,13 +23,16 @@ const MyInstallation = () => {
   }, []);
 
   const handleRemove = (id) => {
-    const updated = installedIds.filter((item) => item !== String(id));
-    localStorage.setItem("apps", JSON.stringify(updated));
-    setInstalledIds(updated);
+  const updated = installedIds.filter((item) => item !== String(id));
+  localStorage.setItem("apps", JSON.stringify(updated));
+  setInstalledIds(updated);
 
-    const updatedApps = apps.filter((app) => String(app.id) !== String(id));
-    setApps(updatedApps);
-  };
+  const updatedApps = apps.filter((app) => String(app.id) !== String(id));
+  setApps(updatedApps);
+
+  
+  toast.error("App Uninstalled Successfully!");
+};
 
   if (apps.length === 0) {
     return (
