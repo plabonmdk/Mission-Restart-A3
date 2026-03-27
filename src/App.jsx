@@ -11,11 +11,14 @@ import AppDetails from "./pages/AppDetails";
 import MyInstallation from "./pages/MyInstallation";
 
 import ErrorPage from "./pages/ErrorPage";
+import Footer from "./component/Footer";
 
 function App() {
   return (
     <>
-      <Navbar />
+      <div className="max-w-7xl mx-auto">
+        <Navbar />
+      </div>
 
       <ToastContainer
         position="top-right"
@@ -36,6 +39,7 @@ function App() {
         <Route path="/installation" element={<MyInstallation />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+      <Footer></Footer>
     </>
   );
 }

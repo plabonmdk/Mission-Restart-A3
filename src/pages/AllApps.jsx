@@ -59,7 +59,7 @@ const AllApps = () => {
                 </span>
               </div>
               <Link to={`/apps/${app.id}`}>
-                <button className="mt-4 w-full bg-purple-600 hover:bg-orange-600 text-white py-2 rounded-lg font-semibold transition">
+                <button className="mt-4 w-full bg-purple-600 hover:bg-purple-800 text-white py-2 rounded-lg font-semibold transition">
                   View Details
                 </button>
               </Link>

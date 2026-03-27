@@ -13,7 +13,8 @@ const Navbar = () => {
       : "flex items-center gap-1 text-gray-600 hover:text-[#632EE3]";
 
   return (
-    <nav className="bg-white shadow-md sticky top-0 z-50">
+    <div className="max-w-7xl mx-auto">
+      <nav className= "">
       <div className="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
         {/* Logo */}
         <Link
@@ -35,7 +36,7 @@ const Navbar = () => {
             <FaDownload /> Installation
           </NavLink>
           <a
-            href="https://github.com/your-username"
+            href="https://github.com/plabonmdk"
             target="_blank"
             rel="noreferrer"
             className="flex items-center gap-2 bg-gradient-to-r from-[#632EE3] to-[#9F62F2] text-white px-4 py-2 rounded-lg hover:opacity-90 transition"
@@ -90,6 +91,7 @@ const Navbar = () => {
         </a>
       </div>
     </nav>
+    </div>
   );
 };
 
